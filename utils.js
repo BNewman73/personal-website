@@ -10,7 +10,7 @@ Array.prototype.createObjectsFrom2D = function(xOffset = 0, yOffset = 0) {
     const objects = []
     this.forEach((row, y) => {
         row.forEach((symbol, x) => {
-            if (symbol === 261 || symbol === 864) {
+            if (symbol != 0) {
                 objects.push(new CollisionBlock({
                     position: {
                         x: 32 * x + xOffset,
@@ -21,6 +21,16 @@ Array.prototype.createObjectsFrom2D = function(xOffset = 0, yOffset = 0) {
         })
     })
     return objects
+}
+
+Array.prototype.createCollisions = function() {
+    const result = []
+    this.forEach(object => {
+        const parsedCollisionsTemp = object.data.parse2D(object.width)
+        const collisionBlocksTemp = parsedCollisionsTemp.createObjectsFrom2D(object.x, object.y)
+        result.push(...collisionBlocksTemp)
+    })
+    return result
 }
 
 function rectCollision({rectangle1, rectangle2}) {

@@ -1,12 +1,13 @@
 class Sprite {
-    constructor({position, src, frames = 1, animations, loop = true, autoplay = true}) {
+    constructor({position, src, frames = 1, between = 0, animations, loop = true, autoplay = true}) {
         this.position = position
         this.frames = frames
+        this.between = between
         this.loaded = false
         this.image = new Image()
         this.image.onload = () => {
             this.loaded = true
-            this.width = this.image.width / frames
+            this.width = this.between === 0 ? this.image.width / frames : (this.image.width - ((this.frames - 1) * this.between)) / frames
             this.height = this.image.height
         }
         this.image.src = src
@@ -28,7 +29,7 @@ class Sprite {
     draw() {
         if (!this.loaded || !this.image.src) return
         const cropbox = {
-            sx: this.width * this.frame,
+            sx: this.width * this.frame + this.between * this.frame,
             sy: 0,
             swidth: this.width,
             sheight: this.height
@@ -41,8 +42,8 @@ class Sprite {
             cropbox.sheight,
             this.position.x,
             this.position.y,
-            this.width * scale,
-            this.height * scale
+            this.width,
+            this.height
         )
         this.updateFrame()
     }

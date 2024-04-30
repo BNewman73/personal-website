@@ -12,6 +12,7 @@ class Player extends Sprite {
         }
         this.inside = false
         this.frozen = false
+        this.direction = ''
     }
 
     updateHitbox() {
@@ -26,5 +27,14 @@ class Player extends Sprite {
         if (animation.image === this.image) return
         this.image = animation.image
         this.frame = 0
+    }
+
+    goIdle() {
+        if (player.direction === '') return
+        if (player.direction === 'up') player.switchSprite('idleUp')
+        else if (player.direction === 'left') player.switchSprite('idleLeft')
+        else if (player.direction === 'down') player.switchSprite('idleDown')
+        else if (player.direction === 'right') player.switchSprite('idleRight')
+        player.direction = ''
     }
 }

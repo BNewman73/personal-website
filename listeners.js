@@ -44,15 +44,6 @@ window.addEventListener('keyup', e => {
     }
 })
 
-// window.addEventListener('resize', resizeCanvas)
-// function resizeCanvas() {
-//     const windowWidth = window.innerWidth
-//     const windowHeight = window.innerHeight
-//     const scaleX = windowWidth / widthAR
-//     const scaleY = windowHeight / heightAR
-//     scale = Math.min(scaleX, scaleY)
-//     const canvasWidth = widthAR * scale
-//     const canvasHeight = heightAR * scale
-//     canvas.width = canvasWidth
-//     canvas.height = canvasHeight
-// }
+window.addEventListener('keydown', (e) => {
+    if (e.key === ' ') dialogueBox.cycleDialogue(zone.npc)
+})
