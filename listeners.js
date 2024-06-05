@@ -44,6 +44,8 @@ window.addEventListener('keyup', e => {
     }
 })
 
-window.addEventListener('keydown', (e) => {
-    if (e.key === ' ') dialogueBox.cycleDialogue(zone.npc)
-})
+window.addEventListener('resize', zoom)
+
+// window.addEventListener('keydown', (e) => {
+//     if (e.key === ' ' && player.npc != null) dialogueBox.cycleDialogue(player)
+// })

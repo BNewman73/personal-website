@@ -4,16 +4,16 @@
 .text span.revealed {
     opacity: 1
 }
-.text span.green {
-    color: #27ae60
+.text span.brown {
+    color: brown
 }
-.text span.red {
-    color: #ff0000
+.text span.bold {
+    font-weight: bold
 }
 
 body {
     background: black;
-    margin: 0px
+    margin: 0px;
 }
 .text {
     font-family: 'Comic Sans MS';
@@ -21,4 +21,28 @@ body {
     position: absolute;
     /* left: 415;
     top: 497 */
+}
+
+.question-options {
+    position: absolute;
+    top: 0;
+    display: none
+}
+
+.question-options button {
+    height: 32px;
+    width: 485px;
+    font-family: 'Comic Sans MS';
+    font-size: 16px;
+    display: block;
+    margin: 16px 0;
+    /* padding: 10px; */
+    background-color: Transparent;
+    border: none;
+    /* border-radius: 4px; */
+    cursor: pointer;
+}
+
+.question-options button:hover {
+    color: #752b00;
 }

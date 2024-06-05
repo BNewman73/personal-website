@@ -1,27 +1,31 @@
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
-<style>
-    body {
-        background: black;
-        margin: 0px
-    }
-</style>
-
 <canvas></canvas>
 <div class="text"></div>
-
+<div id="buttons" class="question-options">
+    <button onclick="showResponse(this, 1)"></button>
+    <button onclick="showResponse(this, 2)"></button>
+    <button onclick="showResponse(this, 3)"></button>
+    <!-- <button onclick="showResponse('grocery', 3)">Did [Your Name] participate in any extracurricular activities?</button> -->
+</div>
+</body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js" integrity="sha512-Mf/xUqfWvDIr+1B6zfnIDIiG7XHzyP/guXUWgV6PgaQoIFeXkJQR5XWh9fqAiCiRCpemabt3naV4jhDWVnuYDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="utils.js"></script>
 <script src="data.js"></script>
+<script src="constants.js"></script>
 <script src="./classes/Port.js"></script>
 <script src="./classes/Sprite.js"></script>
+<script src="./classes/Car.js"></script>
 <script src="./classes/DialogueBox.js"></script>
 <script src="./classes/NPC.js"></script>
+<script src="./classes/Manager.js"></script>
 <script src="./classes/Door.js"></script>
 <script src="./classes/Player.js"></script>
 <script src="./classes/CollisionBlock.js"></script>
 <script src="./classes/Zone.js"></script>
+<script src="utils.js"></script>
 <script src="index.js"></script>
 <script src="listeners.js"></script>

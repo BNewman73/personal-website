@@ -1,14 +1,18 @@
 class Door extends Sprite {
-    constructor({position, src, frames, next, x, y}) {
+    constructor({position, src, frames, zoneTo, relativePosition, playerPosition, scenePosition}) {
         super({position, src, frames, autoplay: false, loop: false})
-        this.next = next
-        this.x = x
-        this.y = y
+        this.zoneTo = zoneTo
+        this.relativePosition = relativePosition
+        this.playerPosition = playerPosition
+        this.scenePosition = scenePosition
         // this.play = false
     }
 
     handleAnimationCompletion() {
-        map[this.next].transition(this.x, this.y)
+        map[this.zoneTo].transition({
+            playerPosition: this.playerPosition,
+            scenePosition: this.scenePosition
+        })
     }
 
     // transition() {
