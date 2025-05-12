@@ -7,7 +7,7 @@ class Manager extends NPC {
             image.src = spriteBook[spriteSheet].src
             this.spriteBook[spriteSheet].image = image
         }
-        this.speed = 1
+        this.speed = 2
         this.reachedPlayer = false
         this.leftPlayer = false
         this.shouldDraw = true

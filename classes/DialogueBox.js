@@ -10,10 +10,10 @@ class DialogueBox extends Sprite {
         // this.container.style.height = 50
         this.speeds = {
             pause: 500,
-            slowest: 800,
-            slow: 120,
-            normal: 90, 
-            fast: 40,
+            slowest: 200,
+            slow: 100,
+            normal: 50, 
+            fast: 25,
             superFast: 10
         }
         this.shouldDraw = false

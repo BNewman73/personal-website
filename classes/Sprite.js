@@ -1,5 +1,5 @@
 class Sprite {
-    constructor({position = {x: 0, y: 0}, src, frames = 1, between = 0, buffer = 10, relativePosition = null, loop = true, autoplay = true}) {
+    constructor({position = {x: 0, y: 0}, src, frames = 1, between = 0, buffer = 8, relativePosition = null, loop = true, autoplay = true}) {
         this.position = position
         this.frames = frames
         this.between = between

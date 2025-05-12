@@ -3,7 +3,7 @@ class Car extends Sprite {
         super({position, src, frames})
         this.right = right
         this.heightOffset = heightOffset
-        this.speed = 2
+        this.speed = 3
     }
     updatePosition({direction}) {
         this.position.x += (direction * this.speed)

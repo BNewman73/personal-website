@@ -10,7 +10,7 @@ class Player extends Sprite {
             }
         }
         this.currentSpritePage = this.spriteBook.outside
-        this.speed = 1
+        this.speed = 2
         this.hitbox = {
             position: {
                 x: this.position.x,

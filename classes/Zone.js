@@ -1,13 +1,14 @@
 class Zone {
-    constructor({background, foreground, collisionBlocks, doors, animations, foregroundAnimations, npcs, inside = true}) {
+    constructor({background, foreground, absoluteForeground, collisionBlocks, doors, animations, foregroundAnimations, npcs, inside = true}) {
         this.background = background
         this.foreground = foreground
+        this.absoluteForeground = absoluteForeground
         this.collisionBlocks = collisionBlocks
         this.doors = doors
         this.animations = animations
         this.foregroundAnimations = foregroundAnimations
         this.npcs = npcs
-        this.movables = [this.background, this.foreground, ...this.collisionBlocks, ...this.doors, ...this.animations]
+        this.movables = [this.background, this.foreground, this.absoluteForeground, ...this.collisionBlocks, ...this.doors, ...this.animations]
         if (this.npcs) {
             this.npcs.forEach(npc => {
                 this.movables.push(npc)
@@ -28,6 +29,7 @@ class Zone {
             onComplete: () => {
                 if (this.inside) {
                     player.currentSpritePage = player.spriteBook.inside
+                    // player.speed = 2
                     player.width = 32
                     player.height = 48
                 }
@@ -99,6 +101,17 @@ class Zone {
             this.foregroundAnimations.forEach(animation => {
                 animation.draw()
             })
+        }
+        if (!this.inside) {
+            for (let i = 0; i < carsLeft.length; i++) {
+                carsLeft[i].draw()
+            }
+            for (let i = 0; i < carsRight.length; i++) {
+                carsRight[i].draw()
+            }
+        }
+        if (this.absoluteForeground) {
+            this.absoluteForeground.draw()
         }
         // this.collisionBlocks.forEach(block => {
         //     block.draw()
