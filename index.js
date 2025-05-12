@@ -233,7 +233,7 @@ const npcMap = {
                     { speed: dialogueBox.speeds.normal, string: "program for the department of computer science and engineering." }
                 ],
                 [
-                    { speed: dialogueBox.speeds.normal, string: "While the fraternity was a great catalyst for the development of his social skills, " },
+                    { speed: dialogueBox.speeds.normal, string: "While the fraternity was a great catalyst for the development of his social skills," },
                     { speed: dialogueBox.speeds.pause, string: "", pause: true },
                     { speed: dialogueBox.speeds.normal, string: "his time as a peer teacher was even more rewarding and beneficial. " },
                 ],
@@ -330,26 +330,13 @@ const npcMap = {
             ],
             [
                 [
-                    { speed: dialogueBox.speeds.normal, string: "Brandon experienced a significant learning moment during his time at university when he and a friend were caught collaborating on an online exam." },
+                    { speed: dialogueBox.speeds.normal, string: "Brandon is currently working as a mail carrier for the USPS in his hometown of Amarillo, Texas." },
                 ],
                 [
-                    { speed: dialogueBox.speeds.normal, string: "This mistake resulted in both of them receiving an F in the course and having to retake it. " },
-                ],
-                [
-                    { speed: dialogueBox.speeds.normal, string: "This incident deeply impacted Brandon and reinforced the importance of" },
-                    { speed: dialogueBox.speeds.normal, string: "academic integrity", classes: ["bold"] },
-                    { speed: dialogueBox.speeds.normal, string: "and" },
-                    { speed: dialogueBox.speeds.normal, string: "ethical behavior.", classes: ["bold"] },
-                ],
-                [
-                    { speed: dialogueBox.speeds.normal, string: "He took full responsibility for his actions and used this experience as a catalyst for person growth." },
-                ],
-                [
-                    { speed: dialogueBox.speeds.normal, string: "Learning to uphold the highest standards of honesty and integrity in all his endeavors, " },
+                    { speed: dialogueBox.speeds.normal, string: "Although he would rather be working in the field of computer science," },
                     { speed: dialogueBox.speeds.pause, string: "", pause: true },
-                    { speed: dialogueBox.speeds.normal, string: "this commitment has since been a cornerstone of his life." },
-
-                ]
+                    { speed: dialogueBox.speeds.normal, string: "he is grateful for the opportunity and enjoys the work-life balance that it provides." },
+                ],
             ],
             [
                 [
@@ -361,7 +348,7 @@ const npcMap = {
         ],
         userQuestions: [
             "What values are important to Brandon?",
-            "When has Brandon learned from a mistake?",
+            "Where is Brandon working now?",
             "I'm going to do some more exploring."
         ],
         inside: true,
@@ -496,31 +483,28 @@ const npcMap = {
             ],
             [
                 [
-                    { speed: dialogueBox.speeds.normal, string: "Outside! " },
+                    { speed: dialogueBox.speeds.normal, string: "Staying physically active and learning new things! " },
                     { speed: dialogueBox.speeds.pause, string: "", pause: true },
-                    { speed: dialogueBox.speeds.normal, string: "In his free time, " },
-                    { speed: dialogueBox.speeds.pause, string: "", pause: true },
-                    { speed: dialogueBox.speeds.normal, string: "Brandon loves to be under the sun and" },
-                    { speed: dialogueBox.speeds.normal, string: "physically active.", classes: ["bold"] },
-                ],
-                [
-                    { speed: dialogueBox.speeds.normal, string: "Whether it be lifting weights, "},
+                    { speed: dialogueBox.speeds.normal, string: "Brandon loves to break a sweat by participating in sports,  " },
                     { speed: dialogueBox.speeds.pause, string: "", pause: true },
                     { speed: dialogueBox.speeds.normal, string: "running, " },
                     { speed: dialogueBox.speeds.pause, string: "", pause: true },
-                    { speed: dialogueBox.speeds.normal, string: "playing basketball, " },
-                    { speed: dialogueBox.speeds.pause, string: "", pause: true },
-                    { speed: dialogueBox.speeds.normal, string: "or his most recent hobby, " },
-                    { speed: dialogueBox.speeds.pause, string: "", pause: true },
-                    { speed: dialogueBox.speeds.normal, string: "skateboarding, " },
-                    { speed: dialogueBox.speeds.pause, string: "", pause: true },
-                    { speed: dialogueBox.speeds.normal, string: "Brandon has always enjoyed breaking a sweat. "},
+                    { speed: dialogueBox.speeds.normal, string: "and lifting weights." },
                 ],
                 [
-                    { speed: dialogueBox.speeds.normal, string: "While great in themselves, "},
+                    { speed: dialogueBox.speeds.normal, string: "Since graduating from university, " },
                     { speed: dialogueBox.speeds.pause, string: "", pause: true },
-                    { speed: dialogueBox.speeds.normal, string: "these physical activities also seem to provide Brandon with a boost in energy and mental clarity when it is time to work. " },
-                ]
+                    { speed: dialogueBox.speeds.normal, string: "Brandon has also resumed his study and acquisition of the" },
+                    { speed: dialogueBox.speeds.normal, string: "Japanese language.", classes: ["bold"] },
+                ],
+                [
+                    { speed: dialogueBox.speeds.normal, string: "Although time consuming, " },
+                    { speed: dialogueBox.speeds.pause, string: "", pause: true },
+                    { speed: dialogueBox.speeds.normal, string: "his passionate interest in the language means that it is always enjoyable. " },
+                ],
+                [
+                    { speed: dialogueBox.speeds.normal, string: "His abosolute favorite pastime has become watching Japanese shows with their original Japanese audio and subtitles. "},
+                ],
             ],
             [
                 [
@@ -734,6 +718,13 @@ const city = new Zone({
             y: offset.y
         },
         src: './img/x16/cityForeground.png'
+    }),
+    absoluteForeground: new Sprite({
+        position: {
+            x: offset.x,
+            y: offset.y
+        },
+        src: './img/x16/cityAbsoluteForeground.png'
     }),
     collisionBlocks: createObjects({
         data: collisionsCity,
@@ -1028,14 +1019,6 @@ function updateCars() {
             carsLeft.shift()
         }
     }
-    if (!zone.inside) {
-        for (let i = 0; i < carsLeft.length; i++) {
-            carsLeft[i].draw()
-        }
-        for (let i = 0; i < carsRight.length; i++) {
-            carsRight[i].draw()
-        }
-    }
 }
 
 function tryInteractionNPC() {
@@ -1070,6 +1053,7 @@ function tryInteractionNPC() {
                 })
                 dialogueBox.shouldDraw = true
                 dialogueBox.playDialogue(npc)
+                // npc.portrait.buffer = 10
                 npc.portrait.position.x = dialogueBox.position.x + 5
                 npc.portrait.position.y = dialogueBox.position.y + 14
                 npc.interacted = true
@@ -1244,10 +1228,14 @@ function drawUI() {
     if (dialogueBox.shouldDraw) {
         dialogueBox.draw()
         player.npc.portrait.draw()
-    }
-    if (showingButtons) {
-        for (let i = 0; i < 3; i++) {
-            if (activeButtons[i]) buttons[i].draw()
+        if (showingButtons) {
+            player.npc.portrait.autoplay = false
+            for (let i = 0; i < 3; i++) {
+                if (activeButtons[i]) buttons[i].draw()
+            }
+        }
+        else {
+            player.npc.portrait.autoplay = true
         }
     }
 }
@@ -1290,7 +1278,8 @@ const manager = new Manager({
     portrait: new Sprite({
         position: {x: 0, y: 0},
         src: './img/x32/brandonPortrait.png',
-        frames: 10
+        frames: 10, 
+        buffer: 10
     }),
     dialogue: [
         [
